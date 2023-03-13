@@ -17,4 +17,14 @@ conexion.connect((error) =>{
 
 });
 
+conexion.query('SELECT * FROM prueba_db.tabla_prueba', function(error, results, fields){
+  if(error)
+  throw error;
+
+  results.forEach(results => {
+    console.log(results);
+  });
+
+});
+
 conexion.end();
