@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,4 +22,5 @@ router.post('/registro', bodyParser.urlencoded({ extended: true }), (req, res, n
   req.render('registrar', { title: 'NUEVA ETIQUETA DE FUNDAS REGISTRADA' });
   // Procesa los datos del formulario y envía la respuesta correspondiente
 });
+
 module.exports = router;

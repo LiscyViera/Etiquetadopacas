@@ -59,7 +59,7 @@ conexion.connect((error) =>{
 app.post('/registro', (req, res) => {
   const { n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion } = req.body;
   const query = `INSERT INTO ticket_gavilla (n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-  connection.query(query, [n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion], (error, res) => {
+  conexion.query(query, [n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion], (error, res) => {
     if (error) {
       console.log('Error al insertar datos:', error);
       res.status(500).send('Error al insertar datos');
@@ -72,4 +72,4 @@ app.post('/registro', (req, res) => {
 
 // Iniciar servidor en el puerto 3000
 conexion.end();
-module.exports = conexion, app;
+module.exports = app;
