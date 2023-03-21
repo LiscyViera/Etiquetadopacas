@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const conexion = require('./app2');
 
 router.post('/registro', (req, res) => {
     const n_paca = req.body.n_paca;
@@ -14,7 +15,7 @@ router.post('/registro', (req, res) => {
     const fecha_elaboracion = req.body.fecha_elaboracion
 
     const query = `INSERT INTO ticket_gavilla (n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    connection.query(query, [n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion], (error, res) => {
+    conexion.query(query, [n_paca, variedad, clase, peso_humedo, peso_despalillo, gavillas_funda, gavilla_paca, prom_gavillas, n_tickets, fecha_elaboracion], (error, result) => {
       if (error) {
         console.log('Error al insertar datos:', error);
         res.status(500).send('Error al insertar datos');
@@ -22,7 +23,8 @@ router.post('/registro', (req, res) => {
         console.log('Datos insertados correctamente');
         res.status(200).send('Datos insertados correctamente');
       }
-    });
+    });    
+    res.render('register', { title: 'NUEVA ETIQUETA DE FUNDAS' });
 });
 
 module.exports = router;

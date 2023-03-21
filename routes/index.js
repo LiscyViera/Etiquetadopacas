@@ -15,4 +15,5 @@ router.get('/registro', function(req, res, next) {
   res.render('register', { title: 'REGISTRAR NUEVA ETIQUETA DE FUNDAS' });
 });
 
+
 module.exports = router;
